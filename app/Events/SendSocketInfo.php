@@ -1,0 +1,53 @@
+<?php
+
+namespace App\Events;
+
+use Illuminate\Broadcasting\Channel;
+use Illuminate\Broadcasting\InteractsWithSockets;
+use Illuminate\Broadcasting\PresenceChannel;
+use Illuminate\Broadcasting\PrivateChannel;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Queue\SerializesModels;
+
+class SendSocketInfo implements ShouldBroadcast
+{
+    use Dispatchable, InteractsWithSockets, SerializesModels;
+
+    /**
+     * Create a new event instance.
+     */
+    public $channel = 'default';
+    public $event = 'event-default';
+    public $message = '{}';
+    public function __construct(object $data)
+    {
+        {
+            $this->channel = $data->channel;
+            $this->event = $data->event;
+            $this->message = $data->message;
+        }
+    }
+
+    /**
+     * Get the channels the event should broadcast on.
+     *
+     * @return array<int, \Illuminate\Broadcasting\Channel>
+     */
+    // public function broadcastOn(): array
+    // {
+    //     return [
+    //         new PrivateChannel('channel-name'),
+    //     ];
+    // }
+
+    public function broadcastOn()
+    {
+        return [$this->channel];
+    }
+  
+    public function broadcastAs()
+    {
+        return $this->event;
+    }
+}
