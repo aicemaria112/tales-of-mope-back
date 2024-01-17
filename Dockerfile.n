@@ -11,8 +11,6 @@ RUN apt-get update && apt-get install -y \
     mbstring \
     zip \
     xml \
-    memcached \
-    memcache \
     curl \
     dom \
     && php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
