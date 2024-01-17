@@ -5,8 +5,7 @@ FROM php:8.1-apache
 # Install necessary libraries
 RUN apt-get update && apt-get install -y \
     libonig-dev \
-    libzip-dev \
-    memcached
+    libzip-dev 
 
 # Install PHP extensions
 RUN docker-php-ext-install \
@@ -44,13 +43,8 @@ RUN docker-php-ext-install \
 
 COPY .env.testing .env
 RUN php artisan key:generate
+# RUN php artisan passport:install
+# Expose port 8009
+EXPOSE 8009
 
-# Expose port 80
-EXPOSE 80
-
-# Adjusting Apache configurations
-RUN a2enmod rewrite
-COPY apache-config.conf /etc/apache2/sites-available/000-default.conf
-
-
-CMD ["apache2-foreground"]
+CMD ["php","artisan","serve","--host=0.0.0.0","--port=8009"]
