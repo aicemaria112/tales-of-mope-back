@@ -6,8 +6,6 @@ COPY . /var/www/html
 
 WORKDIR /var/www/html
 
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-
 RUN composer install
 
 RUN chown -R www-data:www-data /var/www/html
@@ -18,4 +16,4 @@ RUN php artisan key:generate
 # Expose port 8009
 EXPOSE 8009
 
-CMD ["php","artisan","serve","--host=localhost","--port=8009"]
+CMD ["php","artisan","serve","--host=0.0.0.0","--port=8009"]
