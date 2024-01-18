@@ -18,4 +18,4 @@ RUN php artisan key:generate
 # Expose port 8009
 EXPOSE 8009
 
-CMD ["php","artisan","serve","--port=8009"]
+CMD ["php","artisan","serve","--host=localhost","--port=8009"]
