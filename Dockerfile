@@ -15,5 +15,6 @@ RUN php artisan key:generate
 # RUN php artisan passport:install
 # Expose port 8009
 EXPOSE 8000
+RUN php artisan migrate
 
 CMD ["php","artisan","serve","--host=0.0.0.0"]
