@@ -29,6 +29,7 @@ class SendNotify extends Command
      */
     public function handle()
     {
+        dd(DB::connection()->getPdo());
         $object = new stdClass();
         // /**
         //  * channel

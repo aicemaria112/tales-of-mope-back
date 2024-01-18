@@ -75,7 +75,10 @@ return [
             'prefix' => '',
             'prefix_indexes' => true,
             'search_path' => 'public',
-            'sslmode' => 'prefer',
+            'sslmode' => 'require',
+            'options' => [
+                'endpoint%3Dep-twilight-meadow-a5foow94',
+            ],
         ],
 
         'sqlsrv' => [
