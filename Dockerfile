@@ -14,6 +14,6 @@ COPY .env.testing .env
 RUN php artisan key:generate
 # RUN php artisan passport:install
 # Expose port 8009
-EXPOSE 8009
+EXPOSE 8000
 
-CMD ["php","artisan","serve","--host=0.0.0.0","--port=8009"]
+CMD ["php","artisan","serve","--host=0.0.0.0"]
